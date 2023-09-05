@@ -8,6 +8,7 @@ const Tracking = () => {
     const [order, setOrder] = useState({
         _id: ''
     })
+    const [items, setItems] = useState([])
     const [status, setStatus] = useState('order_placed')
     const updateStatus = (order_status) => {
         const statuses = document.querySelectorAll('.status_line');
@@ -31,13 +32,13 @@ const Tracking = () => {
     };
     useEffect(() => {
         updateStatus(status)
-    },[status])
-    const socket = io('https://pizza-mania-zqoq.onrender.com')
+    }, [status])
+    const socket = io('https://pizza-mania-23rd.onrender.com')
     const { id } = useParams()
     const fetchOrder = async () => {
         try {
             const response = await fetch(
-                `https://pizza-mania-zqoq.onrender.com/api/v1/customer/${id}`,
+                `https://pizza-mania-23rd.onrender.com/api/v1/customer/${id}`,
                 {
                     method: 'GET',
                     headers: {
@@ -47,6 +48,8 @@ const Tracking = () => {
             );
             const data = await response.json();
             setOrder(data.data); // Update the orders state with the fetched data
+            setItems(data.data.items)
+            console.log(data.data.items)
             setStatus(data.data.status)
         } catch (error) {
             console.log(error);
@@ -66,11 +69,10 @@ const Tracking = () => {
     return (
         <div>
             <section className="status">
-                <div className="container mx-auto">
-                    <div className="status-box w-full lg:w-2/3 mx-auto">
+                <div className="container mx-auto flex">
+                    <div className="status-box w-full lg:w-1/4 ml-[8rem] mr-0">
                         <div className="flex items-center justify-between mb-12">
                             <h1 className="text-xl font-bold">Track Delivery Status</h1>
-                            <h6 className="bg-white py-1 rounded-full px-4 text-green-600 text-xs">{order._id}</h6>
                             <input id="hiddenInput" type="hidden" value={JSON.stringify(order)} />
                         </div>
                         <ul>
@@ -81,6 +83,22 @@ const Tracking = () => {
                             <li class="status_line textsm md:text-xl" data-status="completed"><span>Completed</span></li>
                         </ul>
                     </div>
+                        <div class="sticky-container">
+                            <div class="sticky-outer">
+                                <div class="sticky">
+                                    <p className='text-center text-[#FE5F1E] text-xl'>Order Details</p>
+                                    <div class="sticky-content px-10 flex flex-col">
+                                        <ul>
+                                            {
+                                                items.map((element) => {
+                                                    return <li>&#8226; {element.name} - {element.qty}</li>
+                                                })
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </section>
         </div>
