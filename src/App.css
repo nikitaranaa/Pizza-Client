@@ -7,12 +7,13 @@
     --grey: #ccc;
     --smooth: all .3s ease-in-out;
   }
-  
-  section.status {
+  .hero {
+    background: var(--secondary);
+  }
+  .status {
     background: var(--secondary);
     min-height: calc(100vh - 86px);
   }
-  
   .status-box {
     padding: 60px 0 0;
   }
@@ -142,3 +143,89 @@
     animation:s3 1s infinite linear;
   }
   @keyframes s3 {to{transform: rotate(1turn)}}
+
+  .sticky-container {
+    max-width: 270px;
+    position: relative;
+  }
+  
+  .sticky-outer {
+    display: flex;
+    padding-top: 25%;
+    position: relative;
+  
+    width: 100%;
+  }
+  
+  .sticky {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  
+  /* Shadow behind the sticky note */
+  .sticky:before {
+    box-shadow: -2px 2px 15px 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
+    content: '';
+    width: 90%;
+    left: 5px;
+    height: 83%;
+    position: absolute;
+    top: 30%;
+  }
+  
+  /* The sticky note itself */
+  .sticky-content {
+    background: linear-gradient(
+      180deg,
+      #FE5F1E 0%,
+      #FE5F1E 12%,
+      #FE5F1E 75%,
+      #FE5F1E 100%
+
+
+    );
+    width: 100%;
+    height: 100%;
+    color : white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  
+    clip-path: url(#stickyClip);
+  }
+  
+  /* Add responsiveness */
+  @media screen and (min-width: 640px) {
+    .sticky:before {
+      height: 79%;
+      width: 90%;
+    }
+    .sticky-content {
+      font-size: 1 rem;
+    }
+  }
+  
+  @media screen and (min-width: 768px) {
+    .sticky:before {
+      height: 75%;
+      width: 90%;
+    }
+    .sticky-content {
+      font-size: 1 rem;
+    }
+  }
+  
+  @media screen and (min-width: 1024px) {
+    .sticky:before {
+      height: 73%;
+      width: 90%;
+    }
+    .sticky-content {
+      font-size: 1.25rem;
+    }
+  }
