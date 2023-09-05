@@ -1,59 +1,16 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import List from '../components/List'
 import imageSource from '../img/empty-cart.png'
-import { Link, useNavigate } from 'react-router-dom'
-import { toast } from 'react-hot-toast'
-import { deleteAll } from '../redux/slices/CartSlice'
+import { Link } from 'react-router-dom'
+
 const Cart = () => {
-    const token = useSelector((state) => state.user.token)
-    const navigate = useNavigate()
     const cart = useSelector((state) => state.cart)
-    const isloggedIn = useSelector((state) => state.user.isLoggedIn) 
+    const isloggedIn = useSelector((state) => state.user.isLoggedIn)
     const totalPrice = cart.reduce((accumulator, current) => {
         return accumulator + current.qty * current.price
     }, 0)
-    const [formData, setFormData] = useState({
-        phone: '',
-        address: ''
-    })
-    function changeHandler(event) {
-        setFormData((prev) => {
-            return {
-                ...prev,
-                [event.target.name]: event.target.value
-            }
-        })
-    }
-    const dispatch = useDispatch()
-    async function submitHandler(event) {
-        event.preventDefault();
-        try {
-            const payload = {
-                ...formData,
-                items : cart
-            };
-            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/customer/orders', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify(payload)
-            });
-            response = await response.json()
-            if(response.success){
-                dispatch(deleteAll())
-                toast.success('Order is successfully placed')
-                navigate('/customer/orders')
-            }
-            else{
-                toast.error(response.message)
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    
     return (
         <section className="cart py-16">
             {
@@ -91,35 +48,16 @@ const Cart = () => {
                             </div>
                             {
                                 isloggedIn ? (
-                                    <div>
-                                        <form className='flex justify-center items-center' onSubmit={submitHandler}>
-                                            <div className='flex flex-col gap-2 min-w-full'>
-                                                <input className='border border-gray-400 p-2 w-1/2 mb-4'
-                                                    required
-                                                    placeholder='Enter your Phone Number'
-                                                    value={formData.phone}
-                                                    name='phone'
-                                                    onChange={changeHandler}
-                                                ></input>
-                                                <input className='border border-gray-400 p-2 w-1/2 mb-4'
-                                                    required
-                                                    placeholder='Enter your address'
-                                                    value={formData.address}
-                                                    name='address'
-                                                    onChange={changeHandler}
-                                                ></input>
-                                                <button className="px-6 py-2 rounded-full text-white font-bold bg-orange-500 w-1/2" type="submit">Order Now</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                ) : (
-                                    <Link to='/login' className="inline-block cursor-pointer px-4 py-2 rounded-full text-white font-bold mt-4 bg-orange-500">Login to Continue</Link>
-                                )
+                                    <Link to = '/customer/details' className = "inline-block cursor-pointer px-4 py-2 rounded-full text-white font-bold mt-4 bg-orange-500">Enter Details</Link>
+
+                                ): (
+                                    <Link to = '/login' className = "inline-block cursor-pointer px-4 py-2 rounded-full text-white font-bold mt-4 bg-orange-500">Login to Continue</Link>
+                        )
                             }
-                        </div>
                     </div>
-                )
-            }
+                    </div>
+    )
+}
         </section>
     )
 }
