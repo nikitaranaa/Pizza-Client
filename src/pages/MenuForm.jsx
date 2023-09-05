@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 
 const MenuForm = () => {
-    const token = useSelector((state) => state.user.token);
+    const token = useSelector((state) => state.user.token)
     const pizza = useSelector((state) => state.menu);
     const navigate = useNavigate();
 
