@@ -4,7 +4,7 @@ import { toast } from 'react-hot-toast'
 import { deleteAll } from '../redux/slices/CartSlice'
 import { useDispatch, useSelector } from 'react-redux'
 const Details = () => {
-    const cart = useSelector((state) => state.cart)
+    const cart = useSelector((state) => state.cart);
     const totalPrice = cart.reduce((accumulator, current) => {
         return accumulator + current.qty * current.price
     }, 0)
