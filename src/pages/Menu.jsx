@@ -7,7 +7,7 @@ import { update } from '../redux/slices/MenuSlice'
 import { useNavigate } from 'react-router-dom'
 const Menu = () => {
     const [pizzas, setPizzas] = useState([])
-    const [loader, setLoader] = useState(true)
+    const [loader, setLoader] = useState(true);
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const fetchPizzas = async () => {
