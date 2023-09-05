@@ -3,6 +3,7 @@ import moment from 'moment'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast'
 const OrderRow = ({ order,fetchOrders }) => {
+    console.log(order)
     const token = useSelector((state) => state.user.token)
     const orderItems = Object.values(order.items)
     async function statusHandler(event) {
@@ -13,7 +14,7 @@ const OrderRow = ({ order,fetchOrders }) => {
                 status: status
             };
             const response = await fetch(
-                'https://pizza-mania-zqoq.onrender.com/api/v1/admin/order/status',
+                'https://pizza-mania-23rd.onrender.com/api/v1/admin/order/status',
                 {
                     method: 'POST',
                     headers: {
@@ -34,7 +35,6 @@ const OrderRow = ({ order,fetchOrders }) => {
     return (
         <tr>
             <td className="border px-4 py-2 text-green-900">
-                <p>{order._id}</p>
                 <div>
                     {orderItems.map((pizza,index) => (
                         <p key={index}>
@@ -43,9 +43,10 @@ const OrderRow = ({ order,fetchOrders }) => {
                     ))}
                 </div>
             </td>
-            <td className="border px-4 py-2">{order.customerId.name}</td>
-            <td className="border px-4 py-2">{order.address}</td>
-            <td className="border px-4 py-2">
+            <td className="border px-4 py-2 text-center">{order.customerId.name}</td>
+            <td className="border px-4 py-2 text-center">{order.address}</td>
+            <td className="border px-4 py-2 text-center">{order.cutlery}</td>
+            <td className="border px-4 py-2 text-center">
                 <div className="inline-block relative w-64">
                     <form action="/admin/order/status" method="POST">
                         <input type="hidden" name="orderId" value={order._id} />
