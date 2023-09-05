@@ -20,7 +20,8 @@ const Register = () => {
     async function submitHandler(event) {
         event.preventDefault();
         try {
-            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/auth/register', {
+            const toastId = toast.loading("Loading...")
+            let response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -28,6 +29,7 @@ const Register = () => {
                 body: JSON.stringify(formData)
             });
             response = await response.json()
+            toast.dismiss(toastId)
             if (response.success) {
                 toast.success('User registered Successfully')
                 navigate('/login')
@@ -117,7 +119,7 @@ const Register = () => {
                     </div>
                 </form>
                 <p className="text-center text-gray-500 text-xs">
-                    &copy;2023 DTU's Pizza Corner. All rights reserved.
+                    &copy;2022 Chirag's Pizza Corner. All rights reserved.
                 </p>
             </div>
         </section>
