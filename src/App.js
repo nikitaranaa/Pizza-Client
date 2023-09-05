@@ -8,6 +8,9 @@ import Tracking from "./pages/Tracking";
 import Admin from "./pages/Admin";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Details from "./pages/Details";
+import Menu from "./pages/Menu";
+import MenuForm from "./pages/MenuForm";
 function App() {
   return (
     <div>
@@ -17,9 +20,12 @@ function App() {
         <Route path="/cart" element={<Cart/>} />
         <Route path="/customer/orders" element={<Orders/>} />
         <Route path="/customer/orders/:id" element={<Tracking/>} />
+        <Route path="/customer/details" element={<Details/>} />
         <Route path="/admin/orders" element={<Admin/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
+        <Route path="/admin/menu" element={<Menu/>} />
+        <Route path="/admin/menu/edit" element={<MenuForm/>} />
       </Routes>
     </div>
   );
