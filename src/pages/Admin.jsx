@@ -13,7 +13,7 @@ const Admin = () => {
     const fetchOrders = async () => {
         try {
             const response = await fetch(
-                'https://pizza-mania-23rd.onrender.com/api/v1/admin/orders',
+                'https://pizza-mania-zqoq.onrender.com/api/v1/admin/orders',
                 {
                     method: 'GET',
                     headers: {
