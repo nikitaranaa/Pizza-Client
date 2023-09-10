@@ -16,7 +16,7 @@ const Card = ({pizza, fetchPizzas}) => {
     const token = useSelector((state) => state.user.token)
     const deletehandler = async() => {
         try{
-            let response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/admin/menu/delete',
+            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/admin/menu/delete',
                 {
                     method: 'POST',
                     headers: {
