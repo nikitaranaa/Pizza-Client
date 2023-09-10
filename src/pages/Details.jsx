@@ -80,7 +80,7 @@ const Details = () => {
                         )
                         return
                     }
-                    response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/customer/orders/online',{
+                    response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/customer/orders/online',{
                         method : 'POST',
                         headers: {
                             'Content-Type': 'application/json',
