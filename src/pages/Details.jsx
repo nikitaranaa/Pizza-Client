@@ -40,7 +40,7 @@ const Details = () => {
     const dispatch = useDispatch()
     async function verifyPayment(bodyData, token) {
         try {
-            let response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/customer/orders/paymentVerification',{
+            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/customer/orders/paymentVerification',{
                 method : 'POST',
                 headers: {
                     'Content-Type': 'application/json',
