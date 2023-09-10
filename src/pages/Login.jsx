@@ -22,7 +22,7 @@ const Login = () => {
         event.preventDefault();
         try {
             const toastId = toast.loading("Loading...")
-            let response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/auth/login', {
+            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
