@@ -11,7 +11,7 @@ const Orders = () => {
       try {
         setLoading(true)
         const response = await fetch(
-          'https://pizza-mania-23rd.onrender.com/api/v1/customer/orders-history',
+          'https://pizza-mania-zqoq.onrender.com/api/v1/customer/orders-history',
           {
             method: 'POST',
             headers: {
