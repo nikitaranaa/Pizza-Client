@@ -33,12 +33,12 @@ const Tracking = () => {
     useEffect(() => {
         updateStatus(status)
     }, [status])
-    const socket = io('https://pizza-mania-23rd.onrender.com')
+    const socket = io('https://pizza-mania-zqoq.onrender.com')
     const { id } = useParams()
     const fetchOrder = async () => {
         try {
             const response = await fetch(
-                `https://pizza-mania-23rd.onrender.com/api/v1/customer/${id}`,
+                `https://pizza-mania-zqoq.onrender.com/api/v1/customer/${id}`,
                 {
                     method: 'GET',
                     headers: {
