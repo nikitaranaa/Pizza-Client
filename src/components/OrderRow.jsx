@@ -14,7 +14,7 @@ const OrderRow = ({ order,fetchOrders }) => {
                 status: status
             };
             const response = await fetch(
-                'https://pizza-mania-23rd.onrender.com/api/v1/admin/order/status',
+                'https://pizza-mania-zqoq.onrender.com/api/v1/admin/order/status',
                 {
                     method: 'POST',
                     headers: {
