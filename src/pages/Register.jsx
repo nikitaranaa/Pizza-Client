@@ -21,7 +21,7 @@ const Register = () => {
         event.preventDefault();
         try {
             const toastId = toast.loading("Loading...")
-            let response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/auth/register', {
+            let response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
