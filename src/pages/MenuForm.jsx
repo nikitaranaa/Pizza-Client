@@ -31,7 +31,7 @@ const MenuForm = () => {
             });
         }
     }
-    let url = pizza.edit === 'No' ? 'https://pizza-mania-23rd.onrender.com/api/v1/admin/menu/add' : 'https://pizza-mania-23rd.onrender.com/api/v1/admin/menu/update'
+    let url = pizza.edit === 'No' ? 'https://pizza-mania-zqoq.onrender.com/api/v1/admin/menu/add' : 'https://pizza-mania-zqoq.onrender.com/api/v1/admin/menu/update'
     async function submitHandler(event) {
         event.preventDefault();
         try {
