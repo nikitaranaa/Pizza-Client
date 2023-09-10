@@ -13,7 +13,7 @@ const Menu = () => {
     const fetchPizzas = async () => {
         try {
             setLoader(true)
-            const response = await fetch('https://pizza-mania-23rd.onrender.com/api/v1/auth');
+            const response = await fetch('https://pizza-mania-zqoq.onrender.com/api/v1/auth');
             const data = await response.json();
             setPizzas(data.pizzas)
             setLoader(false)
